@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fff4e6"/>
+  <circle cx="400" cy="320" r="190" fill="#e3c8a4"/>
+  <circle cx="400" cy="320" r="150" fill="#d8ad7d"/>
+  <circle cx="400" cy="320" r="90" fill="#f1d4b2"/>
+  <rect x="310" y="250" width="180" height="90" rx="45" fill="#a46a3f"/>
+  <circle cx="330" cy="270" r="12" fill="#6d7b5c"/>
+  <circle cx="470" cy="300" r="10" fill="#6d7b5c"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Arial" font-size="28" fill="#4a2e1f">Tô de mil</text>
+</svg>

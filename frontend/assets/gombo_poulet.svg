@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f4efe7"/>
+  <circle cx="400" cy="320" r="190" fill="#e6d1b8"/>
+  <circle cx="400" cy="320" r="150" fill="#7f8b5c"/>
+  <circle cx="360" cy="300" r="28" fill="#f3b748"/>
+  <circle cx="460" cy="340" r="26" fill="#f3b748"/>
+  <rect x="320" y="260" width="160" height="90" rx="22" fill="#a46a3f"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Arial" font-size="28" fill="#4a2e1f">Gombo & poulet</text>
+</svg>

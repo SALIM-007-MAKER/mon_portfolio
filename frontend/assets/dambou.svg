@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f6efe7"/>
+  <circle cx="400" cy="320" r="190" fill="#e9d3b8"/>
+  <circle cx="400" cy="320" r="150" fill="#f3b748"/>
+  <circle cx="400" cy="320" r="115" fill="#e7b07c"/>
+  <circle cx="340" cy="280" r="30" fill="#6d7b5c"/>
+  <circle cx="460" cy="300" r="24" fill="#a46a3f"/>
+  <circle cx="420" cy="380" r="28" fill="#5a3a28"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Arial" font-size="28" fill="#4a2e1f">Dambou</text>
+</svg>

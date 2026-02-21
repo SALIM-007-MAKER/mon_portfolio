@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f8f1e7"/>
+  <circle cx="400" cy="320" r="190" fill="#e7d2b6"/>
+  <circle cx="400" cy="320" r="150" fill="#f0b95a"/>
+  <circle cx="340" cy="300" r="26" fill="#c94b3a"/>
+  <circle cx="460" cy="310" r="20" fill="#c94b3a"/>
+  <circle cx="420" cy="380" r="24" fill="#6d7b5c"/>
+  <circle cx="360" cy="360" r="14" fill="#6d7b5c"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Arial" font-size="28" fill="#4a2e1f">Riz gras</text>
+</svg>

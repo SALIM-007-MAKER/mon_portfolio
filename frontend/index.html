@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sahel Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body class="page" id="top">
+  <div class="app-shell" id="app-shell">
+    <aside class="app-sidebar d-none d-lg-block">
+      <div class="sidebar-brand">
+        <span class="sidebar-logo" aria-label="Sahel Kitchen">
+          <span class="logo-mark">SK</span>
+        </span>
+        <div>
+          <p class="sidebar-title mb-0">Sahel Kitchen</p>
+        </div>
+      </div>
+      <nav class="nav flex-column gap-1 mt-4">
+        <a class="nav-link active" href="#menu-section"><i class="fas fa-utensils me-2"></i>Menu</a>
+        <a class="nav-link" href="#cart-section"><i class="fas fa-shopping-cart me-2"></i>Panier</a>
+        <a class="nav-link" href="#orders-section"><i class="fas fa-box me-2"></i>Commandes</a>
+        <a class="nav-link" href="#stats-section"><i class="fas fa-chart-line me-2"></i>Dashboard</a>
+        <a class="nav-link" href="#users-section"><i class="fas fa-users me-2"></i>Utilisateurs</a>
+        <a class="nav-link" id="nav-settings" href="#admin-menu-section"><i class="fas fa-cog me-2"></i>Paramètres</a>
+      </nav>
+      <div class="mt-auto d-grid gap-2">
+        <button id="btn-open-login-mobile" class="btn btn-outline-primary">Connexion</button>
+        <button id="btn-open-register-mobile" class="btn btn-primary">Créer un compte</button>
+      </div>
+    </aside>
+
+    <main class="app-content">
+      <header class="topbar navbar navbar-expand bg-white border-bottom sticky-top">
+        <div class="container-fluid">
+          <button class="btn btn-outline-secondary d-lg-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h1 class="h5 mb-0">Sahel Kitchen - Dashboard</h1>
+          <div class="ms-auto d-flex gap-2 align-items-center topbar__auth">
+            <button id="btn-open-login" class="btn btn-outline-primary btn-sm">Connexion</button>
+            <button id="btn-open-register" class="btn btn-primary btn-sm">Créer un compte</button>
+            <button id="btn-logout" class="btn btn-outline-dark btn-sm hidden">Déconnexion</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="container-fluid py-4">
+        <nav class="mb-3" aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+          </ol>
+        </nav>
+
+        <section class="row g-3 mb-4">
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="metric-card">
+              <i class="fa-solid fa-basket-shopping"></i>
+              <div>
+                <p class="mb-1">Commandes actives</p>
+                <h3 class="mb-0">24</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="metric-card">
+              <i class="fa-solid fa-sack-dollar"></i>
+              <div>
+                <p class="mb-1">Ventes du jour</p>
+                <h3 class="mb-0">0 FCFA</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="metric-card">
+              <i class="fa-solid fa-clock"></i>
+              <div>
+                <p class="mb-1">Temps moyen</p>
+                <h3 class="mb-0">18 min</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-xl-3">
+            <div class="metric-card">
+              <i class="fa-solid fa-star"></i>
+              <div>
+                <p class="mb-1">Satisfaction</p>
+                <h3 class="mb-0">4.8/5</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card mb-4" id="menu-section">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+              <div>
+                <h2 class="h5 mb-1">Gestion du menu</h2>
+                <p class="text-muted mb-0">Catalogue de plats, prix, catégories et stock.</p>
+              </div>
+            </div>
+            <div class="menu__filters mb-3" role="tablist" aria-label="Filtres du menu">
+              <button class="chip chip--active" type="button">Tous</button>
+              <button class="chip" type="button">Entrées</button>
+              <button class="chip" type="button">Plats</button>
+              <button class="chip" type="button">Desserts</button>
+              <button class="chip" type="button">Boissons</button>
+            </div>
+            <div class="menu__grid" id="menu-grid" aria-live="polite"></div>
+            <div id="menu-loading" class="state state--loading hidden" aria-hidden="true">
+              <div class="skeleton skeleton--card"></div>
+              <div class="skeleton skeleton--card"></div>
+              <div class="skeleton skeleton--card"></div>
+            </div>
+            <div id="menu-empty" class="state state--empty hidden" aria-hidden="true">
+              <div>
+                <h3 class="h6">Aucun plat disponible</h3>
+                <p class="mb-0">Aucun élément ne correspond à ce filtre.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="row g-4 mb-4" id="cart-section">
+          <div class="col-12 col-xl-8">
+            <div class="card h-100">
+              <div class="card-body">
+                <h2 class="h5">Panier</h2>
+                <p class="text-muted">Prépare et valide rapidement une commande.</p>
+                <div id="cart-items" class="cart__items" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-4">
+            <div class="card h-100">
+              <div class="card-body d-grid gap-2">
+                <h3 class="h6">Résumé</h3>
+                <p id="cart-total" class="cart__total mb-2">0 FCFA</p>
+                <label for="payment-provider" class="form-label mb-1">Paiement en ligne</label>
+                <select id="payment-provider" class="form-select mb-2" aria-label="Choisir un moyen de paiement">
+                  <option value="stripe">Stripe (Carte)</option>
+                  <option value="flutterwave">Flutterwave (Carte / Mobile Money)</option>
+                </select>
+                <button id="btn-pay-order" class="btn btn-outline-primary btn--full" type="button">
+                  <i class="fa-solid fa-credit-card"></i> Payer en ligne
+                </button>
+                <button id="btn-place-order" class="btn btn-primary btn--full">
+                  <i class="fa-solid fa-shopping-cart"></i> Commander sans paiement en ligne
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card mb-4" id="orders-section">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+              <div>
+                <h2 class="h5">Mes commandes</h2>
+                <p class="text-muted mb-0">Historique et suivi de statut.</p>
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <input id="orders-date-from" type="date" class="form-control form-control-sm" aria-label="Date de début commandes" />
+                <input id="orders-date-to" type="date" class="form-control form-control-sm" aria-label="Date de fin commandes" />
+                <button id="btn-apply-orders-filter" class="btn btn-sm btn-outline-primary" type="button">Filtrer</button>
+              </div>
+            </div>
+            <div id="orders-list" class="orders__list" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="card mb-4 hidden" id="staff-section">
+          <div class="card-body">
+            <h2 class="h5">Suivi des commandes (Personnel)</h2>
+            <div id="staff-orders" class="orders__list" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="card mb-4 hidden" id="admin-menu-section">
+          <div class="card-body">
+            <h2 class="h5">Paramètres Admin - Gestion du menu</h2>
+            <p class="text-muted">Actions disponibles: ajouter un plat, modifier le prix, modifier les détails, supprimer un plat.</p>
+            <form id="menu-form" class="form form--panel">
+              <input type="hidden" id="menu-id" />
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label" for="menu-name">Nom du plat</label>
+                  <input class="form-control" type="text" id="menu-name" placeholder="Nom du plat" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="menu-price">Prix</label>
+                  <input class="form-control" type="number" id="menu-price" placeholder="Prix (ex: 6500)" min="100" step="100" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="menu-desc">Description</label>
+                  <input class="form-control" type="text" id="menu-desc" placeholder="Description" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label" for="menu-image">URL image</label>
+                  <input class="form-control" type="text" id="menu-image" placeholder="URL image" />
+                </div>
+              </div>
+              <button class="btn btn-primary mt-3" type="submit"><i class="fa-solid fa-plus"></i> Enregistrer</button>
+            </form>
+            <div id="admin-menu-list" class="menu__grid menu__grid--admin"></div>
+          </div>
+        </section>
+
+        <section class="card mb-4 hidden" id="stats-section">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+              <div>
+                <h2 class="h5 mb-1">Dashboard analytique</h2>
+                <p class="text-muted mb-0">Ventes, performance et tendances.</p>
+              </div>
+              <div class="d-flex gap-2 align-items-center">
+                <input id="stats-date-from" type="date" class="form-control form-control-sm" aria-label="Date de début statistiques" />
+                <input id="stats-date-to" type="date" class="form-control form-control-sm" aria-label="Date de fin statistiques" />
+                <button id="btn-apply-stats-filter" class="btn btn-sm btn-outline-primary" type="button">Filtrer</button>
+              </div>
+            </div>
+
+            <div class="status-list mb-3" id="status-summary">
+              <div><strong>0</strong><span>En préparation</span></div>
+              <div><strong>0</strong><span>Prêtes</span></div>
+              <div><strong>0</strong><span>Livrées</span></div>
+            </div>
+
+            <div class="row g-3 mb-3">
+              <div class="col-12 col-lg-6">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="h6">Ventes par jour</h3>
+                    <canvas id="sales-chart" height="120"></canvas>
+                    <div id="sales-list" class="stat-list mt-3"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-lg-6">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="h6">Plats populaires</h3>
+                    <canvas id="popular-chart" height="120"></canvas>
+                    <div id="popular-list" class="stat-list mt-3"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table">
+              <div class="table__header">
+                <h3 class="h6 mb-0">Journal des commandes</h3>
+                <button id="btn-sort-orders" class="btn btn-outline-secondary btn-sm" type="button">
+                  <i class="fa-solid fa-sliders"></i> Trier
+                </button>
+              </div>
+              <div class="table__scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Commande</th>
+                      <th>Client</th>
+                      <th>Statut</th>
+                      <th>Montant</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>#1024</td>
+                      <td>Client premium</td>
+                      <td><span class="badge badge--success">Livrée</span></td>
+                      <td>18 500 FCFA</td>
+                    </tr>
+                    <tr>
+                      <td>#1025</td>
+                      <td>Client pro</td>
+                      <td><span class="badge badge--warning">En préparation</span></td>
+                      <td>9 800 FCFA</td>
+                    </tr>
+                    <tr>
+                      <td>#1026</td>
+                      <td>Client régulier</td>
+                      <td><span class="badge badge--info">Prête</span></td>
+                      <td>12 300 FCFA</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card mb-4" id="users-section">
+          <div class="card-body">
+            <h2 class="h5">Utilisateurs</h2>
+            <p class="text-muted mb-2">Gestion des accès et des rôles.</p>
+            <p class="mb-0">Connectez-vous en administrateur pour créer et gérer les utilisateurs via l'API.</p>
+          </div>
+        </section>
+
+        <section class="card mb-4 hidden" id="settings-section">
+          <div class="card-body">
+            <h2 class="h5">Paramètres</h2>
+            <p class="text-muted mb-2">Espace de configuration.</p>
+            <p class="mb-0">Pour l'admin, la gestion complète des plats est disponible dans la section "Paramètres Admin - Gestion du menu".</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileNav">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Navigation</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <a class="d-block mb-2" href="#menu-section"><i class="fas fa-utensils me-2"></i>Menu</a>
+      <a class="d-block mb-2" href="#cart-section"><i class="fas fa-shopping-cart me-2"></i>Panier</a>
+      <a class="d-block mb-2" href="#orders-section"><i class="fas fa-box me-2"></i>Commandes</a>
+      <a class="d-block mb-2" href="#stats-section"><i class="fas fa-chart-line me-2"></i>Dashboard</a>
+      <a class="d-block mb-2" href="#users-section"><i class="fas fa-users me-2"></i>Utilisateurs</a>
+      <a class="d-block mb-2" id="mobile-nav-settings" href="#admin-menu-section"><i class="fas fa-cog me-2"></i>Paramètres</a>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="modal__content modal__content--auth">
+      <button class="modal__close" id="close-modal" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+      <aside class="auth-aside">
+        <h3>Sahel Kitchen</h3>
+        <p>Gestion restaurant</p>
+      </aside>
+      <div class="auth-panel">
+        <div class="modal__header auth-hero">
+          <h3 id="auth-title">Connexion</h3>
+          <p class="muted">Connexion sécurisée</p>
+        </div>
+        <div class="modal__tabs">
+          <button id="tab-register" class="tab" type="button">Inscription</button>
+        </div>
+        <form id="login-form" class="form modal__form auth-form auth-form--login" novalidate>
+          <div class="form__field">
+            <label for="login-email">Email</label>
+            <div class="input-wrap">
+              <input type="email" id="login-email" placeholder="Email" autocomplete="email" required />
+            </div>
+            <small id="login-email-error" class="field-error" aria-live="polite"></small>
+          </div>
+          <div class="form__field">
+            <label for="login-password">Mot de passe</label>
+            <div class="input-wrap">
+              <input type="password" id="login-password" placeholder="Mot de passe" autocomplete="current-password" required />
+            </div>
+            <small id="login-password-error" class="field-error" aria-live="polite"></small>
+          </div>
+          <p id="login-form-error" class="form__alert hidden" aria-live="polite"></p>
+          <div class="auth-form__actions">
+            <button id="login-submit" class="btn btn-primary btn--full" type="submit"><i class="fa-solid fa-user"></i> Se connecter</button>
+          </div>
+        </form>
+        <form id="register-form" class="form modal__form auth-form hidden" novalidate>
+          <div class="form__field">
+            <label for="register-name">Nom</label>
+            <div class="input-wrap">
+              <input type="text" id="register-name" placeholder="Nom complet" autocomplete="name" required />
+            </div>
+            <small id="register-name-error" class="field-error" aria-live="polite"></small>
+          </div>
+          <div class="form__field">
+            <label for="register-email">Email</label>
+            <div class="input-wrap">
+              <input type="email" id="register-email" placeholder="Email" autocomplete="email" required />
+            </div>
+            <small id="register-email-error" class="field-error" aria-live="polite"></small>
+          </div>
+          <div class="form__field">
+            <label for="register-password">Mot de passe</label>
+            <div class="input-wrap">
+              <input type="password" id="register-password" placeholder="Mot de passe" autocomplete="new-password" required />
+            </div>
+            <small id="register-password-error" class="field-error" aria-live="polite"></small>
+          </div>
+          <div class="form__field">
+            <label for="register-password-confirm">Confirmer le mot de passe</label>
+            <div class="input-wrap">
+              <input type="password" id="register-password-confirm" placeholder="Confirmer le mot de passe" autocomplete="new-password" required />
+            </div>
+            <small id="register-password-confirm-error" class="field-error" aria-live="polite"></small>
+          </div>
+          <p id="register-form-error" class="form__alert hidden" aria-live="polite"></p>
+          <button id="register-submit" class="btn btn-primary btn--full" type="submit"><i class="fa-solid fa-user-plus"></i> Créer un compte</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="modal__content modal__content--small">
+      <button class="modal__close" id="confirm-close" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal__header">
+        <h3 id="confirm-title">Confirmer l'action</h3>
+        <p id="confirm-message" class="muted">Voulez-vous vraiment valider cette opération ?</p>
+      </div>
+      <div class="modal__actions">
+        <button id="confirm-cancel" class="btn btn-outline-secondary" type="button">Annuler</button>
+        <button id="confirm-accept" class="btn btn-primary" type="button">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-stack" class="toast-stack" aria-live="polite"></div>
+</body>
+</html>
+

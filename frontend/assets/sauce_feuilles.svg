@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f2efe5"/>
+  <circle cx="400" cy="320" r="190" fill="#e1cdb2"/>
+  <circle cx="400" cy="320" r="150" fill="#6d7b5c"/>
+  <circle cx="340" cy="310" r="26" fill="#a46a3f"/>
+  <circle cx="470" cy="330" r="20" fill="#a46a3f"/>
+  <rect x="330" y="260" width="140" height="80" rx="18" fill="#f3b748"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Arial" font-size="28" fill="#4a2e1f">Sauce feuilles</text>
+</svg>

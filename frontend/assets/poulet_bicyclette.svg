@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#fbf3e4"/>
+  <circle cx="400" cy="320" r="190" fill="#e8d1b3"/>
+  <circle cx="400" cy="320" r="150" fill="#b6723a"/>
+  <circle cx="370" cy="300" r="28" fill="#f3b748"/>
+  <circle cx="450" cy="360" r="24" fill="#f3b748"/>
+  <circle cx="430" cy="280" r="16" fill="#5a3a28"/>
+  <text x="400" y="540" text-anchor="middle" font-family="Arial" font-size="28" fill="#4a2e1f">Poulet bicyclette</text>
+</svg>
