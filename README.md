@@ -100,7 +100,7 @@ python app.py
 ```
 
 Puis ouvrir:
-- `http://127.0.0.1:5000/`
+- `[http://127.0.0.1:5000/[[[[[[](http://127.0.0.1:5000)](http://127.0.0.1:5000)](http://127.0.0.1:5000)](http://127.0.0.1:5000)](http://127.0.0.1:5000)](http://127.0.0.1:5000)](http://127.0.0.1:5000)`
 - ou `http://localhost:5000/`
 
 ## Comptes et roles
@@ -184,7 +184,7 @@ Champs supportes pour un plat:
 
 Exemple `checkout`:
 
-```json
+```jsonx
 {
   "provider": "stripe",
   "name": "Client Demo",
